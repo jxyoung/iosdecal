@@ -39,7 +39,7 @@ func findStudent(withStudentID sid: Int?, studentIDNumbers: [Int: String] = getS
     // Note: studentIDNumbers[KEY] always returns an optional since there may not be an entry for that KEY.
     
     if sid != nil {
-        let culprit = studentIDNumbers[sid!];
+        let culprit = studentIDNumbers[sid!]
         if let name = culprit {
             return name + " stole the cookie!"
         }
@@ -53,7 +53,7 @@ findStudent(withStudentID: nil) // nil
 findStudent(withStudentID: 40979255) // nil
 //: ## Question 3: Protocols
 //: Make the class `Building` conform to the `Comparable` Protocol, and implement `getCapacity()`.
-class Building {
+class Building: Comparable {
     
     var name: String
     var capacity: Int?
@@ -63,12 +63,21 @@ class Building {
         self.capacity = capacity
     }
     
+    static func < (b1: Building, b2: Building) -> Bool {
+        return b1.getCapacity() > b2.getCapacity()
+    }
+    
+    static func == (b1: Building, b2: Building) -> Bool {
+        return b1.getCapacity() == b2.getCapacity()
+    }
+    
     //: Returns the `capacity` of the building. If the `capacity` is `nil`, then return `0`.
     func getCapacity() -> Int {
         if capacity == nil {
             return 0
+        } else {
+            return capacity!
         }
-        return capacity!
     }
 }
 
