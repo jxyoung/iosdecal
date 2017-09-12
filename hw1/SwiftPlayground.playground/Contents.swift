@@ -53,7 +53,7 @@ findStudent(withStudentID: nil) // nil
 findStudent(withStudentID: 40979255) // nil
 //: ## Question 3: Protocols
 //: Make the class `Building` conform to the `Comparable` Protocol, and implement `getCapacity()`.
-class Building: Comparable {
+class Building: Equatable {
     
     var name: String
     var capacity: Int?
